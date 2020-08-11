@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Alerm</title>
+    <title>Alarm</title>
 </head>
 <body>
-    
+    <div class="stbar">
+        <div class="date">
+            <span class="full-date">
+
+            </span>
+        </div>
+        <div class="time">
+            <span class="hr">
+                0
+            </span>
+            <snap class="min">
+                0
+            </snap>
+        </div>
+    </div>
+
+    <div class="alarm">
+        <span class="alarm-time">
+
+        </span>
+        <div class="hr-number">
+            <input type="number" class="alarm-hr" min="0" max="24">
+        </div>
+        
+        <div class="min-number">
+            <input type="number" class="alarm-min" min="0" max="60">
+        </div>
+        <button class="alarm-btn">
+            Set
+        </button>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>
