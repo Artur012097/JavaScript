@@ -61,3 +61,16 @@ body {
     width: 50px;
     height: 30px;
 }
+
+.rs-control .rs-range-color {
+    background-color: #ffffff;
+}
+.rs-control .rs-path-color {
+    background-color: #074af2;
+}
+.rs-control .rs-handle:after {
+    background-color: #ffffff;
+}
+.rs-control .rs-bg-color {
+    background-color: #ffffff;
+}

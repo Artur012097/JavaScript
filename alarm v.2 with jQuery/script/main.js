@@ -23,35 +23,71 @@ setInterval( () => {
 
 let btn = document.querySelector('.alarm-btn');
 
+$(".alarm-hour-set").roundSlider({
+    handleShape: "dot",
+    width: 22,
+    radius: "60",
+    value: 0,
+    max: "24",
+    circleShape: "pie",
+    sliderType: "min-range",
+    lineCap: "round",
+    handleSize: "+15"
+});
+
+$(".alarm-minutes-set").roundSlider({
+    handleShape: "dot",
+    width: 22,
+    radius: "60",
+    value: 0,
+    max: "60",
+    circleShape: "pie",
+    sliderType: "min-range",
+    lineCap: "round",
+    handleSize: "+15"
+});
+
 function alarm () {
-    setInterval( () => {
-        let alarmTime = document.querySelector('.alarm-time');
-        let alarmHr = document.querySelector('.alarm-hr').value;
-        let alarmMin = document.querySelector('.alarm-min').value;
+        let alarmHour = document.querySelector('.alarm-hour');
+        let alarmMinute = document.querySelector('.alarm-minute');
+        let alarmHr = document.querySelector('.alarm-hour-set');
+        let alarmMin = document.querySelector('.alarm-minutes-set');
+        let hourCircleText = document.querySelector('.hour-circle > .rs-tooltip-text');
+        let minuteCircleText = document.querySelector('.minutes-circle > .rs-tooltip-text');
         let date = new Date();
         let hour1 = date.getHours();
         let minutes1 = date.getMinutes();
 
-        if (alarmHr < 0 || alarmHr > 24 || alarmMin < 0 || alarmMin > 60) {
-            alarmTime.textContent = 'Wrong Time!!'
-            alarmHr = '';
-            alarmMin = '';
-            alarmTime = '';
-        }
-        else if (alarmHr !== '' && alarmMin !== '') {
-            alarmTime.textContent = `${alarmHr} : ${alarmMin}`
-        }
+        // if (alarmHr < 0 || alarmHr > 24 || alarmMin < 0 || alarmMin > 60) {
+        //     alarmHour.textContent = 'Wrong Time!!'
+        //     alarmHr = '';
+        //     alarmMin = '';
+        //     alarmHour = '';
+        //     alarmMinute = '';
+        // }
+        // else if (alarmHr !== '' && alarmMin !== '') {
+        //     alarmHour.textContent = `${alarmHr} : `;
+        //     alarmMinute.textContent = alarmMin;
+        // }
 
-        else if (alarmHr == '' && alarmMin == '') {
-            alarmTime.textContent = 'Wrong!! Set Time'
-            alarmTime = '';
-        }
+        // else if (alarmHr == '' && alarmMin == '') {
+        //     alarmHour.textContent = 'Wrong!! Set Time'
+        //     alarmHr = '';
+        //     alarmMin = '';
+        //     alarmHour = '';
+        //     alarmMinute = '';
+        // }
 
-        let audio = new Audio('alarm.mp3')
-        if (alarmHr == hour1 && alarmMin == minutes1) {
-            audio.play();
-        }
-    },1000)
+        // let audio = new Audio('../audio/alarm.mp3')
+        // if (alarmHour == hour1 && alarmMinute == minutes1) {
+        //     audio.play();
+        //     console.log(true)
+        // }
+        console.log(hourCircleText)
 }
 
 btn.addEventListener('click', alarm)
+
+
+
+    
