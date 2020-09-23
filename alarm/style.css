@@ -50,6 +50,10 @@ body {
     font-size: 20px;
     font-weight: 500;
 }
+.points {
+    font-size: 40px;
+    color: #fff;
+}
 
 .alarm-hr, .alarm-min {
     width: 50px;
