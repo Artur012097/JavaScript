@@ -49,7 +49,9 @@ function startGame() {
 function stopGame () {
     isGameStarted = false
     $game.innerHTML = ''
-    show($start)
+    setTimeout(() => {
+        show($start)
+    }, 1000)
     $game.style.backgroundColor = gray
     hide($timeHeader)
     show($resultHeader)
