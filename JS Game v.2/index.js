@@ -30,7 +30,11 @@ function startGame() {
     $game.style.backgroundColor = white
     $gameTime.setAttribute('disabled', 'true')
     setTime()
+    setGameTime()
+    renderBox()
+}
 
+function setGameTime() {
     let interval = setInterval(function() {
         // let variable vor set game time
         let time = parseFloat($time.textContent)
@@ -42,8 +46,6 @@ function startGame() {
             $time.textContent = (time - 0.1).toFixed(1)
         }
     },100)
-    
-    renderBox()
 }
 
 function stopGame () {
