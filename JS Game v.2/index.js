@@ -1,3 +1,4 @@
+// let elements from DOM
 let $game = document.querySelector('#game')
 let $start = document.querySelector('#start')
 let $timeHeader = document.querySelector('#time-header')
@@ -8,10 +9,12 @@ let $time = document.querySelector('#time')
 let score = 0
 let isGameStarted = false
 
+// show element global function
 function show($el) {
     $el.classList.remove('hide')
 }
 
+// hide element global function
 function hide($el) {
     $el.classList.add('hide')
 }
@@ -88,22 +91,28 @@ function renderBox() {
     // random positions render for box
     let maxTop = gameBox.height - boxSize
     let maxLeft = gameBox.width - boxSize
-    // box styles
+    // set box random width
     box.style.width = boxSize + 'px'
+    // set box random height
     box.style.height = boxSize + 'px'
+    // set box random background color from function
     box.style.backgroundColor = letBoxBg()
     box.style.position = 'absolute'
+    // set box random position top
     box.style.top = randomBox(0, maxTop) + 'px'
+    // set box random position left
     box.style.left = randomBox(0, maxLeft) + 'px'
     box.style.cursor = 'pointer'
+    // set data atribut to box, it needs for next ranbom box render after click
     box.setAttribute('data-box', true)
+    // set created div on game box
     $game.insertAdjacentElement('afterbegin', box)
 }
-
+// random background color for rendered boxes
 function letBoxBg() {
     return boxColors[randomBox(0, boxColors.length)]
 }
-
+// randomiser, random numbers from min to max
 function randomBox(min, max) {
     return Math.floor(Math.random() * (max - min) + min)
 }
