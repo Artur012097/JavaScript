@@ -22,6 +22,7 @@ $gameTime.addEventListener('input', setTime)
 
 function startGame() {
     isGameStarted = true
+    score = 0
     hide(start)
     $game.style.backgroundColor = white
     $gameTime.setAttribute('disabled', 'true')
