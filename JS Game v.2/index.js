@@ -6,8 +6,12 @@ let $resultHeader = document.querySelector('#result-header')
 let $result = document.querySelector('#result')
 let $gameTime = document.querySelector('#game-time')
 let $time = document.querySelector('#time')
+let $gameScoreReal = document.querySelector('#game__score')
 let $controlButtons = document.querySelector('#control-buttons')
 let $stopGame = document.querySelector('#stop-game')
+let gameStartMusic = new Audio(gameMusic[randomBox(0, gameMusic.length)])
+let gameEndMusic = new Audio('../audio/game-end.mp3')
+let volumeChangeSound = new Audio('../audio/volume-change.mp3')
 let score = 0
 let isGameStarted = false
 
@@ -24,8 +28,15 @@ function hide($el) {
 $start.addEventListener('click', startGame)
 document.addEventListener('click', boxClick)
 $gameTime.addEventListener('input', setTime)
+$gameTime.addEventListener('input', maxValue)
 $controlButtons.addEventListener('click', timeChange)
-$stopGame.addEventListener('click', stopGame)
+$stopGame.addEventListener('click', () => {
+    if (!isGameStarted) {
+        return false
+    } else {
+        stopGame()
+    }
+})
 
 function startGame() {
     isGameStarted = true
@@ -37,6 +48,22 @@ function startGame() {
     setTime()
     setGameTime()
     renderBox()
+    startMusic()
+}
+
+function stopGame () {
+    isGameStarted = false
+    $game.innerHTML = ''
+    setTimeout(() => {
+        show($start)
+    }, 1300)
+    $game.style.backgroundColor = gray
+    hide($timeHeader)
+    show($resultHeader)
+    $gameTime.removeAttribute('disabled')
+    show($controlButtons)
+    endMusic()
+    setResult()
 }
 
 function setGameTime() {
@@ -49,22 +76,23 @@ function setGameTime() {
             stopGame()
         } else {
             $time.textContent = (time - 0.1).toFixed(1)
+            // game score real time show
+            $gameScoreReal.textContent = score
         }
     },100)
 }
 
-function stopGame () {
-    isGameStarted = false
-    $game.innerHTML = ''
-    setTimeout(() => {
-        show($start)
-    }, 1000)
-    $game.style.backgroundColor = gray
-    hide($timeHeader)
-    show($resultHeader)
-    $gameTime.removeAttribute('disabled')
-    show($controlButtons)
-    setResult()
+function endMusic() {
+    gameStartMusic.pause()
+    gameStartMusic.currentTime = 0
+    gameEndMusic.play()
+    
+}
+
+function startMusic() {
+    gameStartMusic.play()
+    gameEndMusic.pause()
+    gameEndMusic.currentTime = 0
 }
 
 function setResult() {
@@ -74,12 +102,17 @@ function setResult() {
 function timeChange(e) {
     if (e.target.dataset.remove) {
         $gameTime.value --
+        volumeChangeSound.play()
         if ($gameTime.value <= 0) {
             $gameTime.value = 1
         }
     } 
     else if (e.target.dataset.add) {
         $gameTime.value ++
+        volumeChangeSound.play()
+        if ($gameTime.value >= 999) {
+            $gameTime.value = 999
+        }
     }
     setTime()
 }
@@ -93,6 +126,18 @@ function setTime() {
     hide($resultHeader)
 }
 
+function maxValue(e) {
+    if ($gameTime.value.length >= 4) {
+        $gameTime.setAttribute('onKeyDown', 'return false')
+        setTimeout( ()=> {
+            $gameTime.removeAttribute('onKeyDown')
+            $gameTime.value = 999
+        }, 700)
+    } 
+}
+
+
+
 function boxClick(e) {
     // box renders when player clicks on it
     if (e.target.dataset.box) {
@@ -105,7 +150,7 @@ function boxClick(e) {
 function renderBox() {
     // clear html after render next box
     $game.innerHTML = ''
-    // xox create after start button click
+    // box create after start button click
     let box = document.createElement('div')
     // box random size render
     let boxSize = randomBox(30, 100)
@@ -135,6 +180,7 @@ function renderBox() {
     // set created div on game box
     $game.insertAdjacentElement('afterbegin', box)
 }
+
 // random background color for rendered boxes
 function letBoxBg() {
     return boxBg[randomBox(0, boxBg.length)]
@@ -143,6 +189,5 @@ function letBoxBg() {
 function randomBox(min, max) {
     return Math.floor(Math.random() * (max - min) + min)
 }
-
 
 
