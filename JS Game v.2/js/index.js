@@ -9,10 +9,7 @@ let $gameTime = document.querySelector('#game-time')
 let $controlButtons = document.querySelector('#control-buttons')
 let $stopGame = document.querySelector('#stop-game')
 let $muteButton = document.querySelector('#mute-button')
-let gameStartMusic = new Audio(gameMusic[randomBox(0, gameMusic.length)])
-let gameEndMusic = new Audio('../audio/game-end.mp3')
-let volumeChangeSound = new Audio('../audio/volume-change.mp3')
-let zombieTrackSound = new Audio('../audio/zombie-track-sound.mp3')
+let gameStartMusic = new Audio(letAudio())
 let score = 0
 let isGameStarted = false
 $time.textContent = $gameTime.value + '.0'
@@ -234,6 +231,10 @@ function renderBox() {
 function letBoxBg() {
     // set random background for zombies blocks
     return boxBg[randomBox(0, boxBg.length)]
+}
+
+function letAudio() {
+    return gameMusic[randomBox(0, gameMusic.length)]
 }
 // randomiser, random numbers from min to max
 function randomBox(min, max) {
