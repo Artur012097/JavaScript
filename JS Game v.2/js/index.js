@@ -70,7 +70,7 @@ function stopGame () {
     // shows start button after 1.45s delay
     setTimeout(() => {
         show($start)
-    }, 1450)
+    }, 1700)
     // change game box background color
     $game.style.backgroundColor = gray
     // remove atribute disabled for time input to set time
@@ -80,7 +80,7 @@ function stopGame () {
     // show control buttons box if game stopped
     show($controlButtons)
     endMusic()
-    setTimeout(startMusic, 2200)
+    setTimeout(startMusic, 1750)
 }
 
 // game duration time set function, shows time on time show block, acts when player clicks on start button and edns when time is up
