@@ -1,0 +1,23 @@
+{
+  "name": "lesson-webpack",
+  "version": "1.0.0",
+  "description": "Lesson folder for WebPack lessons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Artur012097/JavaScript/tree/master/lesson-WebPack"
+  },
+  "keywords": [
+    "js",
+    "webpack"
+  ],
+  "author": "Artur Khachatryan",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
