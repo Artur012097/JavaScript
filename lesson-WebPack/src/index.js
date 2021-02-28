@@ -1,6 +1,7 @@
 import {config} from './modules/config'
 import App from './modules/app.component'
 import './modules/header.component'
+import './css/index.css'
 
 let app = new App('Hello')
 app.log()

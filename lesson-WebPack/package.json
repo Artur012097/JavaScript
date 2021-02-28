@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
+    "dev:watch": "webpack --mode development --watch",
     "build": "webpack --mode production"
   },
   "repository": {
@@ -18,8 +19,13 @@
   "author": "Artur Khachatryan",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^5.1.0",
     "html-webpack-plugin": "^5.2.0",
+    "style-loader": "^2.0.0",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
   }
 }
