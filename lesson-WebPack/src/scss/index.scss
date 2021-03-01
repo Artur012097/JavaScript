@@ -1,0 +1,15 @@
+$red: red;
+$fSize: 24px;
+$fWeight: 700;
+
+@mixin font($color, $size, $weight) {
+    color: $color;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+.block {
+    &__text {
+        @include font($red, $fSize, $fWeight)
+    }
+}

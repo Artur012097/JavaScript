@@ -25,3 +25,8 @@
     background-color: rebeccapurple;
     box-sizing: border-box;
 }
+.block__text {
+  color: red;
+  font-size: 24px;
+  font-weight: 700;
+}
