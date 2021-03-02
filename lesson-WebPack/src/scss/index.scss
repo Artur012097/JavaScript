@@ -1,4 +1,5 @@
 $red: red;
+$teal: teal;
 $fSize: 24px;
 $fWeight: 700;
 
@@ -6,6 +7,17 @@ $fWeight: 700;
     color: $color;
     font-size: $size;
     font-weight: $weight;
+}
+
+* {
+    font-size: 24px;
+}
+
+.header {
+    font-size: 30px;
+    text-align: center;
+    color: $teal;
+    padding: 20px 0;
 }
 
 .block {
