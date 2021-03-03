@@ -1,12 +1,14 @@
-const fs = require('fs')
+const express = require('express')
 
-const data = `
-    Hello everyone
-    I'm from Berlin
-`
+const app = express()
 
-fs.writeFileSync('berlin.txt', data)
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
 
-const text = fs.readFileSync('berlin.txt', {encoding: 'utf-8'})
+app.get('/', (req, res) => {
+    res.render('index')
+})
 
-console.log(text)
+app.listen(3000, () => {
+    console.log('Hi from port 3000')
+})
