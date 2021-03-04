@@ -32,7 +32,6 @@ body {
 
 .error {
   color: #ff0000;
-  text-transform: uppercase;
 }
 
 .app__content {

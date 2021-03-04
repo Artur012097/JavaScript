@@ -12,11 +12,25 @@ module.exports = async function(city = '') {
         uri,
         qs: {
             appid: KEY,
-            q: city
+            q: city,
+            units: 'imperial'
         },
         json: true
     }
 
-    const response = rs(options)
-    console.log(response)
+    try {
+        const data = await rs(options)
+        const celsius = (data.main.temp - 32) * 5/9 
+
+        return {
+            weather: `${data.name}: ${celsius.toFixed(0)}`,
+            error: null
+        }
+    } catch (error) {
+        
+        return {
+            weather: null,
+            error: error.error.message
+        }
+    }
 }
